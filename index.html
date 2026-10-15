@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f7deea">
 <title>Você tem novas mensagens ♡</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
 :root{--ink:#6b5364;--line:#8b6f81;--pink:#f6c7db;--soft:#ffe4ee;--paper:#fffaf9;--blue:#d9e9f0}
 *{box-sizing:border-box}html,body{width:100%;min-height:100%;margin:0}body{font-family:Verdana,Geneva,sans-serif;color:var(--ink);background:#fef8fa;overflow:hidden}
@@ -15,10 +16,10 @@
 .counter{min-width:102px;text-align:center}.brand span{color:#bf7296}
 .center-message{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:25px;pointer-events:none}.center-message .big{font-size:clamp(27px,5vw,55px);font-weight:900;letter-spacing:-.05em;color:#bc779b}.center-message p{font-size:13px;line-height:1.8}
 .window{position:absolute;left:0;top:0;width:min(390px,calc(100vw - 28px));background:var(--paper);border:2px solid var(--line);box-shadow:5px 5px 0 #ba87a2,9px 9px 0 #f5c7d9;opacity:0;transform:translateY(-25px) scale(.89) rotate(var(--tilt,0deg));transition:opacity .14s,transform .19s;display:flex;flex-direction:column;max-height:min(70vh,470px);touch-action:pan-y}
-.window.show{opacity:1;transform:translateY(0) scale(1) rotate(var(--tilt,0deg))}.window.closing{opacity:0;transform:translateY(22px) scale(.85) rotate(5deg);pointer-events:none}
+.window.final-window{--tilt:0deg!important}.window.show{opacity:1;transform:translateY(0) scale(1) rotate(var(--tilt,0deg))}.window.closing{opacity:0;transform:translateY(22px) scale(.85) rotate(5deg);pointer-events:none}
 .titlebar{height:35px;flex-shrink:0;background:var(--pink);border-bottom:2px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 7px 0 11px;cursor:grab;user-select:none;touch-action:none}.titlebar:active{cursor:grabbing}.window:nth-of-type(3n) .titlebar{background:var(--blue)}.window:nth-of-type(5n) .titlebar{background:#edd7ef}
 .win-title{font-size:10px;letter-spacing:.06em;font-weight:900;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.controls{display:flex;gap:5px;align-items:center}.control{border:1.5px solid var(--line);background:#fff9fb;min-width:23px;height:22px;font-size:13px;color:var(--ink);font-weight:bold;line-height:17px;cursor:pointer}.control:hover,.action:hover{background:#fff}.control:focus-visible,.action:focus-visible,.replay:focus-visible{outline:3px solid #bd73a0;outline-offset:2px}
-.win-body{overflow:auto;min-height:0;padding:20px 17px 18px;text-align:center}.symbol{font-size:27px;color:#bf77a0;margin:0 0 9px}.message{font-size:13px;line-height:1.65;overflow-wrap:anywhere;margin:0 auto 17px;white-space:pre-wrap}.action{border:2px solid var(--line);background:var(--soft);padding:8px 25px;min-width:96px;color:var(--ink);font:700 12px Verdana,sans-serif;letter-spacing:.07em;cursor:pointer;box-shadow:2px 2px 0 #dbb5c8}.win-image{display:block;max-width:100%;width:100%;max-height:165px;object-fit:contain;margin:0 auto 12px;border:1.5px dashed #d7a5bd;background:#fff3f8}.play-midia{display:inline-block;border:2px solid var(--line);background:#f6c7db;color:var(--ink);font:700 16px Verdana,sans-serif;padding:16px 21px;cursor:pointer;box-shadow:3px 3px 0 #d5a6bc;margin-bottom:15px}.media-status{font-size:11px;line-height:1.5;margin:0 0 12px}.image-note{font-size:10px;color:#a17d93;margin:-4px 0 14px}
+.win-body{overflow:auto;min-height:0;padding:20px 17px 18px;text-align:center}.symbol{font-size:27px;color:#bf77a0;margin:0 0 9px}.message{font-size:13px;line-height:1.65;overflow-wrap:anywhere;margin:0 auto 17px;white-space:pre-wrap}.action{border:2px solid var(--line);background:var(--soft);padding:8px 25px;min-width:96px;color:var(--ink);font:700 12px Verdana,sans-serif;letter-spacing:.07em;cursor:pointer;box-shadow:2px 2px 0 #dbb5c8}.win-image{display:block;max-width:100%;width:100%;max-height:165px;object-fit:contain;margin:0 auto 12px;border:0;background:transparent}.play-midia{display:inline-block;border:2px solid var(--line);background:#f6c7db;color:var(--ink);font:700 16px Verdana,sans-serif;padding:16px 21px;cursor:pointer;box-shadow:3px 3px 0 #d5a6bc;margin-bottom:15px}.media-status{font-size:11px;line-height:1.5;margin:0 0 12px}.image-note{font-size:10px;color:#a17d93;margin:-4px 0 14px}
 .toast{position:absolute;z-index:6000;bottom:18px;left:50%;transform:translateX(-50%);background:#fffafdee;border:1.5px solid var(--line);padding:10px 14px;font-size:11px;text-align:center;box-shadow:3px 3px 0 #d5a6bc;transition:opacity .3s;max-width:calc(100vw - 25px)}.hidden{opacity:0;pointer-events:none}.replay{pointer-events:auto;justify-self:center;margin-top:14px;background:#f6c7db;color:var(--ink);border:2px solid var(--line);padding:12px 18px;font-weight:bold;cursor:pointer;box-shadow:3px 3px 0 #d5a6bc}.replay[hidden]{display:none}
 @media(max-width:600px){.header{top:9px;left:9px;right:9px}.brand,.counter{font-size:9px;padding:8px}.window{width:min(320px,calc(100vw - 26px));max-height:58vh}.win-body{padding:15px 12px}.message{font-size:12px}.win-image{max-height:135px}.toast{font-size:10px;bottom:8px}.center-message .big{font-size:29px}}
 @media(prefers-reduced-motion:reduce){.window{transition:none}.toast{transition:none}}
@@ -26,7 +27,7 @@
 </head>
 <body>
 <main class="desktop" id="desktop">
-  <div class="header"><div class="brand">♡ <span>POPUP</span> MAIL.EXE</div><div class="counter" id="counter">0 NOTIFICAÇÕES</div></div>
+  <div class="header"><div class="brand">💌 <span>pink</span> mail.exe</div><div class="counter" id="counter">0 NOTIFICAÇÕES</div></div>
   <section class="center-message" aria-live="polite"><div class="big" id="finalTitle">INCOMING MAIL ♡</div><p id="finalDescription">Aguarde… carregando mensagens.</p><button class="replay" id="replay" hidden>↻ VER TUDO DE NOVO</button></section>
   <div class="toast" id="toast">♡ Sua caixa de entrada está prestes a ficar um pouquinho caótica…</div>
 </main>
@@ -35,8 +36,7 @@
    MENSAGENS: DA MAIS FUNDA À MAIS SOBREPOSTA.
    A mensagem #10 fica no fundo. A #1 é a mais superficial.
    Imagens: ponha seus arquivos em imagens/ no GitHub.
-   Mídia: coloque sua música ou vídeo em midia/musica.mp4,
-   ou altere o caminho abaixo para .mp3, .ogg ou .mp4.
+   Mídia: coloque seu MP3 em midia/musica.mp3.
    ============================================================= */
 const MENSAGENS = [
   {tipo:'texto', texto:'nunca vou deixar de torcer por você!\n\n- Seu fã chinês #1', botao:'OK'}, // TEXTO 10 (mais fundo)
@@ -44,7 +44,7 @@ const MENSAGENS = [
   {tipo:'texto', texto:'The Neighborhood e Charli são no mesmo dia', botao:'OK'}, // TEXTO 9
   {tipo:'texto', texto:'precisa mesmo ser um oboé? eles devem ser os maiores mercenários!', botao:'OK'}, // TEXTO 8
   {tipo:'imagem', texto:'', imagem:'imagens/foto4.jpg', botao:'OK'},
-  {tipo:'midia', texto:'', arquivo:'midia/musica.mp4', botao:'OK'}, // TEXTO 7: botão play
+  {tipo:'midia', texto:'', arquivo:'midia/musica.mp3', botao:'OK'}, // TEXTO 7: botão play
   {tipo:'texto', texto:'vc perguntou uma vez se eu ainda ia gostar de você se fosse louca, eu falei acho que sim porque o que faz as melhores pessoas serem loucas é elas não deixarem o que as outras pessoas pensam mudarem quem elas são.', botao:'OK'}, // TEXTO 6
   {tipo:'imagem', texto:'', imagem:'imagens/foto3.jpg', botao:'OK'},
   {tipo:'texto', texto:'eu não sei se já te perguntei isso, mas vc não acha que mexilhão é alguém que se mexe muito? (e não um bicho)', botao:'OK'}, // TEXTO 5
@@ -82,9 +82,9 @@ function placeholder(index){
   return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
 function updateCounter(){const amount=windows.filter(w=>w.isConnected&&!w.classList.contains('closing')).length;counter.textContent=amount+' '+(amount===1?'NOTIFICAÇÃO':'NOTIFICAÇÕES');if(!running&&amount===0&&!disposed){title.textContent=CONFIG.tituloFinal;description.textContent=CONFIG.textoFinal;replay.hidden=false;toast.classList.add('hidden');}}
-function closeWindow(win){if(!win||!win.isConnected||win.classList.contains('closing'))return;win.classList.add('closing');setTimeout(()=>{win.remove();updateCounter()},180);}
+function closeWindow(win){if(!win||!win.isConnected||win.classList.contains('closing'))return;const audio=win.querySelector('audio');if(audio)audio.pause();win.classList.add('closing');setTimeout(()=>{win.remove();updateCounter()},180);}
 function makeWindow(msg,index){
- const node=document.createElement('section');node.className='window';node.style.setProperty('--tilt',rand(-3,3).toFixed(1)+'deg');node.style.zIndex=++highest;node.setAttribute('role','dialog');node.setAttribute('aria-label','Nova Mensagem');
+ const node=document.createElement('section');node.className='window';if(index===0)node.classList.add('final-window');node.style.setProperty('--tilt',rand(-3,3).toFixed(1)+'deg');node.style.zIndex=++highest;node.setAttribute('role','dialog');node.setAttribute('aria-label','Nova Mensagem');
  const image = msg.tipo==='imagem' ? '<img class="win-image" alt="'+escapeHtml(msg.alt||'Imagem da mensagem')+'" src="'+escapeHtml(msg.imagem||placeholder(index))+'">' : msg.tipo==='midia' ? '<button type="button" class="play-midia">▶ PLAY ♡</button><p class="media-status" aria-live="polite">Clique para ouvir ♫</p>' : '<div class="symbol" aria-hidden="true">'+(index%3===0?'♡':index%3===1?'✉':'✧')+'</div>';
  node.innerHTML='<div class="titlebar"><div class="win-title">Nova Mensagem</div><div class="controls"><button class="control" type="button" aria-label="Fechar janela">×</button></div></div><div class="win-body">'+image+'<p class="message">'+escapeHtml(msg.texto)+'</p><button class="action" type="button">'+escapeHtml(msg.botao||'OK')+'</button></div>';
  node.querySelectorAll('.control,.action').forEach(b=>b.addEventListener('click',()=>closeWindow(node)));
@@ -95,29 +95,31 @@ function makeWindow(msg,index){
    const play=node.querySelector('.play-midia');
    const status=node.querySelector('.media-status');
    play.addEventListener('click',async()=>{
-     if(!media){media=document.createElement('audio');media.src=msg.arquivo;media.preload='none';node.appendChild(media);media.addEventListener('ended',()=>{play.textContent='▶ PLAY ♡';status.textContent='Tocar novamente ♫'});}
-     if(media.paused){try{await media.play();play.textContent='Ⅱ PAUSE';status.textContent='Tocando ♫'}catch(e){status.textContent='Arquivo indisponível. Adicione '+msg.arquivo+' ao repositório.';}}
+     if(!media){media=document.createElement('audio');media.src=msg.arquivo;media.preload='auto';node.appendChild(media);media.addEventListener('ended',()=>{play.textContent='▶ PLAY ♡';status.textContent='Tocar novamente ♫'});}
+     if(media.paused){try{await media.play();play.textContent='Ⅱ PAUSE';status.textContent='Tocando ♫'}catch(e){status.textContent='Não foi possível tocar. Verifique o arquivo '+msg.arquivo+' no GitHub.';}}
      else{media.pause();play.textContent='▶ PLAY ♡';status.textContent='Pausado ♫';}
    });
  }
  const vw=innerWidth,vh=innerHeight,w=Math.min(vw-28,vw<=600?320:390),h=msg.tipo==='imagem'?290:(msg.tipo==='midia'?220:(msg.texto.length>170?320:210));
- // Cada popup nasce numa região aleatória da tela, sem seguir a ordem da lista.
- // A ordem de MENSAGENS determina apenas as camadas (fundo -> frente).
- const safeTop=vw<600?48:56;
- const safeBottom=vw<600?28:20;
- const roomX=Math.max(0,vw-w-20);
- const roomY=Math.max(0,vh-Math.min(h,vh*.58)-safeTop-safeBottom);
- let x=10+rand(0,roomX), y=safeTop+rand(0,roomY);
- // Em algumas janelas, favorece regiões próximas das bordas; outras se amontoam no centro.
- if(Math.random()<.38){
-   x=10+roomX*(Math.random()<.5?rand(0,.22):rand(.78,1));
-   y=safeTop+roomY*(Math.random()<.5?rand(0,.25):rand(.75,1));
+ // A primeira janela é a mensagem final: fixa no centro e na camada mais funda.
+ // As demais formam um amontoado central com dispersão radial imprevisível.
+ const maxX=Math.max(0,vw-w), maxY=Math.max(0,vh-Math.min(h,vh*.58));
+ const centerX=maxX/2, centerY=Math.max(vw<600?38:45,maxY/2);
+ let x=centerX, y=centerY;
+ if(index!==0){
+   // Maioria bem no centro, algumas escapam mais para os lados.
+   const spread=Math.random()<.78?rand(.08,.32):rand(.34,.62);
+   const angle=rand(0,Math.PI*2);
+   x=centerX+Math.cos(angle)*maxX*spread;
+   y=centerY+Math.sin(angle)*maxY*spread;
+   x=Math.max(0,Math.min(maxX,x));
+   y=Math.max(vw<600?38:44,Math.min(maxY,y));
  }
  node.style.left=x+'px';node.style.top=y+'px';
  desktop.appendChild(node);windows.push(node);requestAnimationFrame(()=>node.classList.add('show'));updateCounter();
  // Permite arrastar pelo topo para descobrir janelas escondidas (mouse ou toque).
  const bar=node.querySelector('.titlebar');let active=false,startX=0,startY=0,left=0,top=0;
- bar.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;active=true;startX=e.clientX;startY=e.clientY;left=node.offsetLeft;top=node.offsetTop;node.style.zIndex=++highest;bar.setPointerCapture(e.pointerId)});
+ bar.addEventListener('pointerdown',e=>{if(index===0||e.target.closest('button'))return;active=true;startX=e.clientX;startY=e.clientY;left=node.offsetLeft;top=node.offsetTop;node.style.zIndex=++highest;bar.setPointerCapture(e.pointerId)});
  bar.addEventListener('pointermove',e=>{if(!active)return;node.style.left=Math.min(Math.max(0,left+e.clientX-startX),Math.max(0,innerWidth-90))+'px';node.style.top=Math.min(Math.max(0,top+e.clientY-startY),Math.max(0,innerHeight-55))+'px'});
  bar.addEventListener('pointerup',()=>active=false);bar.addEventListener('pointercancel',()=>active=false);
 }
