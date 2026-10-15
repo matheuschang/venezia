@@ -27,8 +27,8 @@
 </head>
 <body>
 <main class="desktop" id="desktop">
-  <div class="header"><div class="brand">💌 <span>pink</span> mail.exe</div><div class="counter" id="counter">0 NOTIFICAÇÕES</div></div>
-  <section class="center-message" aria-live="polite"><div class="big" id="finalTitle">INCOMING MAIL ♡</div><p id="finalDescription">Aguarde… carregando mensagens.</p><button class="replay" id="replay" hidden>↻ VER TUDO DE NOVO</button></section>
+  <div class="header"><div class="brand"><span>pink</span> mail.exe</div><div class="counter" id="counter">0 NOTIFICAÇÕES</div></div>
+  <section class="center-message" aria-live="polite"><div class="big" id="finalTitle">NOVAS MENSAGENS ♡</div><p id="finalDescription">Aguarde… carregando mensagens.</p><button class="replay" id="replay" hidden>↻ VER TUDO DE NOVO</button></section>
   <div class="toast" id="toast">♡ Sua caixa de entrada está prestes a ficar um pouquinho caótica…</div>
 </main>
 <script>
@@ -59,7 +59,7 @@ const MENSAGENS = [
 const CONFIG = {
   intervaloMs: 115,    // ritmo médio; as janelas surgem em rajadas irregulares
   atrasoInicialMs: 800,
-  tituloFinal: 'INBOX ZERO ♡',
+  tituloFinal: 'INBOX VAZIA',
   textoFinal: 'Você sobreviveu a todas as notificações. Obrigado pela paciência!'
 };
 
@@ -123,7 +123,7 @@ function makeWindow(msg,index){
  bar.addEventListener('pointermove',e=>{if(!active)return;node.style.left=Math.min(Math.max(0,left+e.clientX-startX),Math.max(0,innerWidth-90))+'px';node.style.top=Math.min(Math.max(0,top+e.clientY-startY),Math.max(0,innerHeight-55))+'px'});
  bar.addEventListener('pointerup',()=>active=false);bar.addEventListener('pointercancel',()=>active=false);
 }
-function start(){timers.forEach(clearTimeout);windows.forEach(w=>w.remove());windows=[];running=true;disposed=false;replay.hidden=true;title.textContent='INCOMING MAIL ♡';description.textContent='Recebendo novas mensagens…';toast.classList.remove('hidden');updateCounter();
+function start(){timers.forEach(clearTimeout);windows.forEach(w=>w.remove());windows=[];running=true;disposed=false;replay.hidden=true;title.textContent='NOVAS MENSAGENS ♡';description.textContent='Recebendo novas mensagens…';toast.classList.remove('hidden');updateCounter();
  timers.push(setTimeout(()=>{
  // Rajadas: 2–5 janelas quase juntas, seguidas de pausas curtas e imprevisíveis.
  let delay=0, burstRemaining=0;
